@@ -46,7 +46,7 @@ def webhook():
         message = client.messages.create(
         from_='whatsapp:+14155238886',
         body=dialogflow_response,   
-        to="whatsapp:+{}".format(sender_phone.replace("whatsapp: ", ""))  # Eliminar "whatsapp:" del número de teléfono
+        to=sender_phone  # Eliminar "whatsapp:" del número de teléfono
         )
         print("Mensaje enviado:", message.body)
         return Response(str(message), mimetype='application/xml')
