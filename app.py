@@ -17,7 +17,7 @@ LANGUAGE_CODE = 'es'
 
 # Cliente de DialogFlow
 credentials = service_account.Credentials.from_service_account_file(
-     './etc/secrets/whatsappagent-qcxq-116ff75f1884.json',
+     '/etc/secrets/whatsappagent-qcxq-116ff75f1884.json',
      scopes=['https://www.googleapis.com/auth/cloud-platform']
  )
 session_client = dialogflow.SessionsClient(credentials=credentials)
