@@ -16,21 +16,10 @@ DIALOGFLOW_PROJECT_ID = os.getenv('DIALOGFLOW_PROJECT_ID')
 LANGUAGE_CODE = 'es'
 
 # Cliente de DialogFlow
-credentials = service_account.Credentials.from_service_account_info({
-    "type": "service_account",
-    "project_id": os.getenv('DIALOGFLOW_PROJECT_ID'),
-    "private_key_id": os.getenv('PRIVATE_KEY_ID'),
-    "private_key": os.getenv('PRIVATE_KEY').replace("\\n", "\n"),
-    "client_email": os.getenv('CLIENT_EMAIL'),
-    "client_id": os.getenv('CLIENT_ID'),
-    "auth_uri": os.getenv('AUTH_URI'),
-    "token_uri": os.getenv('TOKEN_URI'),
-    "auth_provider_x509_cert_url": os.getenv('AUTH_PROVIDER'),
-    "client_x509_cert_url": os.getenv('CERT_URL'),
-    "universe_domain": os.getenv('UNIVERSE_DOMAIN')
-  
-}
-)
+credentials = service_account.Credentials.from_service_account_file(
+     './etc/secrets/whatsappagent-qcxq-116ff75f1884.json',
+     scopes=['https://www.googleapis.com/auth/cloud-platform']
+ )
 session_client = dialogflow.SessionsClient(credentials=credentials)
 
 @app.route('/webhook', methods=['POST'])
